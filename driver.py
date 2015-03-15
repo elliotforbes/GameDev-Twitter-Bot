@@ -64,5 +64,5 @@ def auto_retweet(q, count=250):
     print "We Favorited a total of %i out of %i tweets" % (success, len(result['statuses']))
     
 if __name__ == "__main__":
-    auto_retweet("Nails")
+    auto_retweet("GameDev")
     auto_fav("IndieDev")

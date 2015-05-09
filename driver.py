@@ -1,10 +1,10 @@
 from twitter import Twitter, OAuth, TwitterHTTPError
 import time
 #enter the corresponding information from your Twitter application:
-consumer_key = 'Pisuo7SzAMx4oFKviIyutpjum'#keep the quotes, replace this with your consumer key
-consumer_secret = 'TmG10F6fzW83k30ktV34i7Ig6rH1VlJdVSpM9ADVHjfGSrJaTY'#keep the quotes, replace this with your consumer secret key
-access_token_key = '1937379115-p6HoW5b2xCH6Y0ktgqIYknNbwOp936M0VhFhScZ'#keep the quotes, replace this with your access token
-access_token_secret = 'I5oHVdeOLvau7B30truWiV9zPatpSUqCJEyufyC6adP5l'#keep the quotes, replace this with your access token secret
+consumer_key = ''#keep the quotes, replace this with your consumer key
+consumer_secret = ''#keep the quotes, replace this with your consumer secret key
+access_token_key = ''#keep the quotes, replace this with your access token
+access_token_secret = ''#keep the quotes, replace this with your access token secret
 
 
 t = Twitter(auth=OAuth(access_token_key, access_token_secret,
@@ -41,7 +41,7 @@ def retweet_tweet(tweet):
         print "Error: ", e
         return None
     
-def auto_fav(q, count=250):
+def auto_fav(q, count):
     result = search_tweets(q, count)
     a = result['statuses'][0]['user']['screen_name']
     print a
@@ -52,7 +52,7 @@ def auto_fav(q, count=250):
     print "We Favorited a total of %i out of %i tweets" % (success,
           len(result['statuses']))
     
-def auto_retweet(q, count=250):
+def auto_retweet(q, count):
     result = search_tweets(q, count)
     a = result['statuses'][0]['user']['screen_name']
     print a
@@ -64,5 +64,15 @@ def auto_retweet(q, count=250):
     print "We Favorited a total of %i out of %i tweets" % (success, len(result['statuses']))
     
 if __name__ == "__main__":
-    auto_retweet("GameDev")
-    auto_fav("IndieDev")
+    while(1):
+        try:
+            auto_retweet("GameDev", 1)
+            auto_retweet("IndieDev", 1)
+            auto_retweet("ScreenshotSaturday", 1)
+        except Exception, e:
+            print(e)   
+        
+        try:
+            auto_fav("IndieDev", 1)
+        except Exception, e:
+            print(e)
